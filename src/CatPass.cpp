@@ -46,11 +46,15 @@ static bool inspectOneLoop(Loop *L, SmallVectorImpl<Loop *> &Worklist, LoopInfo 
     for (BasicBlock *ExitingBlock : ExitingBlocks) {
         if (BranchInst *BI = dyn_cast<BranchInst>(ExitingBlock->getTerminator())) {
             if (BI->isConditional()) {
-                errs() << "Here is an EXITING block TERMINATOR: ";
-                errs().write_escaped(BI->getName()) << '\n';
+                errs() << "Here is an EXITING block with a conditional TERMINATOR: ";
+                errs().write_escaped(ExitingBlock->getName()) << '\n';
             }
         }
     }
+
+    BasicBlock *LoopLatch = L->getLoopLatch();
+    errs() << "Here is a LATCH block: ";
+    errs().write_escaped(LoopLatch->getName()) << '\n';
 
     return Changed;
 }
