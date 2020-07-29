@@ -1,4 +1,12 @@
-# LLVM_middleend_template
+# Transformation Template
+
+Out-of-tree pass for optimizing Rust bounds checking code. Currently in template/analysis form. To use: 
+
+```sh
+$ opt -load build/CAT.so -CAT INPUT.ll -o OUTPUT.ll
+```
+
+## LLVM_middleend_template
 
 This is the template to use for assignments of the Code Analysis and Transformation class at Northwestern University.
 
